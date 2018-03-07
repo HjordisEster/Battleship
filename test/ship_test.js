@@ -16,7 +16,7 @@ describe('checkForShip', function () {
 		expect(checkForShip(player, [9, 9])).to.be.false;
 	});
 
-	// A Ship
+	// Report ship located at given coordinates
 	it('should correctly report a ship located at the given coordinates', function () {
 
 		player = {
@@ -28,5 +28,20 @@ describe('checkForShip', function () {
 		};
 
 		expect(checkForShip(player, [0, 0])).to.be.true;
+	});
+
+// Report ship located at given coordinates
+	it('should handle ships at more than one coordinates', function () {
+
+		player = {
+			ships: [
+				{
+					locations: [[0, 0], [0, 1]]
+				}
+			]
+		};
+		expect(checkForShip(player, [0, 1])).to.be.true;
+		expect(checkForShip(player, [0, 0])).to.be.true;
+		expect(checkForShip(player, [9, 9])).to.be.false;
 	});
 });
